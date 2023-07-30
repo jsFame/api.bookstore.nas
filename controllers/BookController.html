@@ -68,7 +68,7 @@
                 <h3>Prefix</h3>
             </p>
             <p class="comment">
-                <code>book</code>
+                <code>books</code>
             </p>
 
 
@@ -265,7 +265,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -303,7 +303,7 @@
                                 <tr>
                                     <td>id</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                     </td>
 
                                     <td>
@@ -343,7 +343,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -381,7 +381,7 @@
                                 <tr>
                                     <td>id</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                     </td>
 
                                     <td>
@@ -421,7 +421,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateBookDto: <a href="../classes/UpdateBookDto.html" target="_self">UpdateBookDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateBookDto: <a href="../classes/UpdateBookDto.html" target="_self">UpdateBookDto</a>)</code>
                 </td>
             </tr>
 
@@ -459,7 +459,7 @@
                                 <tr>
                                     <td>id</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                     </td>
 
                                     <td>
@@ -505,7 +505,7 @@ import { BookService } from &#x27;./book.service&#x27;
 import { CreateBookDto } from &#x27;./dto/create-book.dto&#x27;
 import { UpdateBookDto } from &#x27;./dto/update-book.dto&#x27;
 
-@Controller(&#x27;book&#x27;)
+@Controller(&#x27;books&#x27;)
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
@@ -520,17 +520,17 @@ export class BookController {
   }
 
   @Get(&#x27;:id&#x27;)
-  findOne(@Param(&#x27;id&#x27;) id: string) {
+  findOne(@Param(&#x27;id&#x27;) id: number) {
     return this.bookService.findOne(+id)
   }
 
   @Patch(&#x27;:id&#x27;)
-  update(@Param(&#x27;id&#x27;) id: string, @Body() updateBookDto: UpdateBookDto) {
+  update(@Param(&#x27;id&#x27;) id: number, @Body() updateBookDto: UpdateBookDto) {
     return this.bookService.update(+id, updateBookDto)
   }
 
   @Delete(&#x27;:id&#x27;)
-  remove(@Param(&#x27;id&#x27;) id: string) {
+  remove(@Param(&#x27;id&#x27;) id: number) {
     return this.bookService.remove(+id)
   }
 }
