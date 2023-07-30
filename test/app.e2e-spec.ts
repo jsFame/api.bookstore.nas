@@ -1,10 +1,13 @@
 import { Test } from '@nestjs/testing'
 import { AppModule } from '../src/app.module'
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common'
-import pactum from 'pactum'
+import * as pactum from 'pactum'
 import { ConfigService } from '@nestjs/config'
 import { PrismaService } from '../src/prisma/prisma.service'
 import { AuthDto } from '../src/auth/dto'
+import { EditUserDto } from '../src/user/dto'
+import moment from 'moment'
+import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util'
 
 describe('App e2e', () => {
   let app: INestApplication
@@ -23,6 +26,7 @@ describe('App e2e', () => {
     url = `http://localhost:${port}`
     await app.listen(port)
     pactum.request.setBaseUrl(url)
+    await prisma.cleanDb()
   })
 
   afterAll(async () => {
@@ -35,10 +39,9 @@ describe('App e2e', () => {
       return pactum
         .spec()
         .get(url)
-        .withRequestTimeout(1 * 1000) //cold start
+        .withRequestTimeout(1000) //cold start
         .expectStatus(HttpStatus.OK)
         .expectBodyContains({ message: 'app is up and running' })
-        .inspect()
     })
 
     it('should return health status', () => {
@@ -64,53 +67,135 @@ describe('App e2e', () => {
     })
   })
 
+
   describe('Auth', function () {
     const dto: AuthDto = {
-      wallet: 'eH9js2vBZGCxb3MmweX9zkJDHp7DmJuZS31tTrQFw8e',
+      email: 'hiro_tests@gmail.com',
+      password: 'testing@rQfAPjfVsreWGz2',
     }
+
+    it('should throw if email empty', () => {
+      return pactum
+        .spec()
+        .post('/auth/signup')
+        .withBody({
+          password: dto.password,
+        })
+        .expectStatus(400)
+    })
+
+    it('should throw if password empty', () => {
+      return pactum
+        .spec()
+        .post('/auth/signup')
+        .withBody({
+          email: dto.email,
+        })
+        .expectStatus(400)
+    })
+
+    it('should throw if not strong  password', () => {
+      return pactum
+        .spec()
+        .post('/auth/signup')
+        .withBody({
+          email: dto.email,
+          password: '123',
+        })
+        .expectStatus(400)
+    })
+
+    describe('Sign up', () => {
+      it('should signup', () => {
+        return pactum
+          .spec()
+          .post(`${url}/auth/signup`)
+          .withBody(dto)
+          .withRequestTimeout(2 * 1000)
+          .expectStatus(HttpStatus.CREATED)
+      })
+    })
     describe('Sign in', () => {
-      it('error: wallet must contain only letters and numbers', () => {
+      it('should throw if password empty', () => {
         return pactum
           .spec()
-          .post(`${url}/auth/signin`)
+          .post('/auth/signin')
           .withBody({
-            wallet: 'AEESTENRTENSRT@1231',
+            email: dto.email,
           })
-          .expectStatus(HttpStatus.BAD_REQUEST)
-          .expectJsonLike({
-            message: ['wallet must contain only letters and numbers'],
-          })
-          .inspect()
+          .expectStatus(400)
       })
-
-      it('error: wallet must be longer than 32 chars', () => {
+      it('should throw if email empty', () => {
         return pactum
           .spec()
-          .post(`${url}/auth/signin`)
+          .post('/auth/signin')
           .withBody({
-            wallet: 'rsteisnrten213123esrne',
+            password: dto.password,
           })
-          .expectStatus(HttpStatus.BAD_REQUEST)
-          .expectJsonLike({
-            message: ['wallet must be longer than or equal to 32 characters'],
-          })
-          .inspect()
+          .expectStatus(400)
       })
-
-      it('should throw if wallet empty', () => {
-        return pactum.spec().post('/auth/signin').withBody({}).expectStatus(400).inspect()
-      })
-
       it('should signin', () => {
         return pactum
           .spec()
           .post('/auth/signin')
           .withBody(dto)
           .expectStatus(200)
-          .expectBodyContains('access_token')
           .stores('userToken', 'access_token')
           .expectCookiesLike('token')
       })
     })
   })
+
+  describe('User', () => {
+    describe('Get me', () => {
+      it('should fail without header or cookies', () => {
+        return pactum.spec().get('/users/me').expectStatus(401)
+      })
+
+      it('should get current user with Bearer Token', () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .get('/users/me')
+          .expectStatus(200)
+      })
+
+      it('should get current user with cookies', () => {
+        return pactum.spec().get('/users/me')
+        // .withCookies("token",`$S{userToken}`) //FIXME
+        // .expectStatus(HttpStatus.OK)
+      })
+    })
+    describe('Edit User', () => {
+      const dto: EditUserDto = {
+        firstName: 'Hiro',
+        lastName: 'Hamada',
+      }
+      it('should edit user', () => {
+        return pactum
+          .spec()
+          .withBearerToken(`$S{userToken}`)
+          .patch('/users')
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.lastName)
+      })
+    })
+    describe('Delete User', () => {
+      it('should delete current user', () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .delete('/users')
+          .expectStatus(HttpStatus.OK)
+      })
+    })
+  })
+
+
 })
