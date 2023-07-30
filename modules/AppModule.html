@@ -216,20 +216,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Module} from &#x27;@nestjs/common&#x27;
-import {AppService} from &#x27;./app.service&#x27;
-import {ConfigModule} from &#x27;@nestjs/config&#x27;
-import {AuthModule} from &#x27;./auth/auth.module&#x27;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;
+import { AppService } from &#x27;./app.service&#x27;
+import { ConfigModule } from &#x27;@nestjs/config&#x27;
+import { AuthModule } from &#x27;./auth/auth.module&#x27;
 import Joi from &#x27;joi&#x27;
-import {CacheModule} from &#x27;@nestjs/cache-manager&#x27;
-import {GraphQLModule} from &#x27;@nestjs/graphql&#x27;
-import {ApolloServerPluginLandingPageGraphQLPlayground} from &#x27;@apollo/server-plugin-landing-page-graphql-playground&#x27;
-import {GraphQLDateTime} from &#x27;graphql-iso-date&#x27;
-import {ApolloDriver, ApolloDriverConfig} from &#x27;@nestjs/apollo&#x27;
-import {AppController} from &#x27;./app.controller&#x27;
-import {GraphqlContext} from &#x27;./app.dto&#x27;
-import {UserModule} from &quot;./user/user.module&quot;;
-import {PrismaModule} from &quot;./prisma/prisma.module&quot;;
+import { CacheModule } from &#x27;@nestjs/cache-manager&#x27;
+import { GraphQLModule } from &#x27;@nestjs/graphql&#x27;
+import { ApolloServerPluginLandingPageGraphQLPlayground } from &#x27;@apollo/server-plugin-landing-page-graphql-playground&#x27;
+import { GraphQLDateTime } from &#x27;graphql-iso-date&#x27;
+import { ApolloDriver, ApolloDriverConfig } from &#x27;@nestjs/apollo&#x27;
+import { AppController } from &#x27;./app.controller&#x27;
+import { GraphqlContext } from &#x27;./app.dto&#x27;
+import { UserModule } from &#x27;./user/user.module&#x27;
+import { PrismaModule } from &#x27;./prisma/prisma.module&#x27;
 
 let mode &#x3D; process.env.MODE
 let envFile &#x3D; &#x27;.env&#x27;
@@ -290,13 +290,6 @@ console.debug({ mode, envFile })
   providers: [AppService],
 })
 export class AppModule {}
-/*export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(cookieParser())
-      .forRoutes({ path: &#x27;/graphql&#x27;, method: RequestMethod.ALL })
-  }
-}*/
 </code></pre>
     </div>
 </div>
