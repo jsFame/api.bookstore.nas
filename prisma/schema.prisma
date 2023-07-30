@@ -38,6 +38,7 @@ model Book {
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
 
+  @@unique([title, writer])
   @@map("books")
 }
 
@@ -51,5 +52,6 @@ model Order {
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
 
+  @@unique([customerId, bookId])
   @@map("orders")
 }
