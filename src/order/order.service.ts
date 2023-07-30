@@ -8,7 +8,6 @@ import { BookService } from '../book/book.service'
 export class OrderService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly orderService: OrderService,
     private readonly userService: UserService,
     private readonly bookService: BookService,
   ) {}
