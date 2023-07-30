@@ -12,6 +12,8 @@ import { AppController } from './app.controller'
 import { GraphqlContext } from './app.dto'
 import { UserModule } from './user/user.module'
 import { PrismaModule } from './prisma/prisma.module'
+import { BookModule } from './book/book.module'
+import { OrderModule } from './order/order.module'
 
 let mode = process.env.MODE
 let envFile = '.env'
@@ -67,6 +69,8 @@ console.debug({ mode, envFile })
     PrismaModule,
     AuthModule,
     UserModule,
+    BookModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
