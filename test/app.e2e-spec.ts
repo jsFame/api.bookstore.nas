@@ -4,6 +4,8 @@ import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common'
 import pactum from 'pactum'
 import { ConfigService } from '@nestjs/config'
 import { PrismaService } from '../src/prisma/prisma.service'
+import { AuthDto } from '../src/auth/dto'
+import { EditUserDto } from '../src/user/dto'
 
 describe('App e2e', () => {
   let app: INestApplication
@@ -63,7 +65,7 @@ describe('App e2e', () => {
     })
   })
 
-  /* describe('Auth', function () {
+  describe('Auth', function () {
     const dto: AuthDto = {
       email: 'hiro_tests@gmail.com',
       password: 'testing@rQfAPjfVsreWGz2',
@@ -190,5 +192,5 @@ describe('App e2e', () => {
           .expectStatus(HttpStatus.OK)
       })
     })
-  })*/
+  })
 })
