@@ -1,7 +1,7 @@
 {
-  "name": "api.taskmon.ai",
+  "name": "api.bookstore.nas",
   "version": "0.2.0",
-  "description": "Web2 backend of taskmon.ai",
+  "description": "Web2 backend of bookstore.nas",
   "author": "laciferin@gmail.com",
   "private": true,
   "license": "MIT",
@@ -129,10 +129,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Web3Mustketeers/api.taskmon.ai.git"
+    "url": "https://github.com/jsFame/api.bookstore.nas"
   },
   "bugs": {
-    "url": "https://github.com/Web3Mustketeers/api.taskmon.ai/issues"
+    "url": "https://github.com/jsFame/api.bookstore.nas/issues"
   },
-  "homepage": "https://github.com/Web3Mustketeers/api.taskmon.ai"
+  "homepage": "https://github.com/jsFame/api.bookstore.nas"
 }

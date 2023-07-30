@@ -1,8 +1,8 @@
-import {INestApplication, Injectable, OnModuleInit} from '@nestjs/common'
-import {Prisma, PrismaClient} from '@prisma/client'
-import {ConfigService} from '@nestjs/config'
+import { INestApplication, Injectable, OnModuleInit } from '@nestjs/common'
+import { Prisma, PrismaClient } from '@prisma/client'
+import { ConfigService } from '@nestjs/config'
 import kleur from 'kleur'
-import {format} from 'sql-formatter'
+import { format } from 'sql-formatter'
 
 const logEvents: Prisma.LogDefinition[] = [
   {
@@ -79,6 +79,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   }
 
   async enableShutdownHooks(app: INestApplication) {
+    // @ts-ignore
     this.$on('beforeExit', async () => {
       await app.close()
     })
