@@ -78,3 +78,33 @@ Content-Type: application/json
 DELETE {{u}}/books/{{bookId}}
 
 
+### Order: Create
+POST {{u}}/orders
+Content-Type: application/json
+
+{
+
+}
+
+> {%
+  res = response.body
+
+  client.assert(res.id >= 1, "book is valid")
+
+  client.global.set("bookId",res.id)
+%}
+
+### Books: Update
+PATCH {{u}}/books/{{bookId}}
+Content-Type: application/json
+
+{
+  "title": "Sample Book Patched",
+  "writer": "John Doe",
+  "coverImage": "https://example.com/sample.jpg",
+  "point": 100,
+  "tags": ["fiction", "adventure"]
+}
+
+### Books: Delete
+DELETE {{u}}/books/{{bookId}}
