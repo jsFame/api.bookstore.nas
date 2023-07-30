@@ -28,7 +28,9 @@ export class OrderService {
 
     const netPoint = user.point - book.point
 
-    return await this.prisma.$transaction([
+    console.debug({ netPoint, userPoint: user.point, bookPoint: book.point })
+
+    const transaction = await this.prisma.$transaction([
       this.prisma.user.update({
         where: {
           id: user.id,
@@ -39,6 +41,8 @@ export class OrderService {
       }),
       this.prisma.order.create({ data: createOrderDto }),
     ])
+
+    return transaction.at(-1)
   }
 
   findAll() {

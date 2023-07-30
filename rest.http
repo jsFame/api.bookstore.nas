@@ -13,14 +13,14 @@ Accept: application/json
 POST {{u}}/auth/signup
 Content-Type: application/x-www-form-urlencoded
 
-email = hirostudent@gmail.com &
+email = hiro11@gmail.com &
 password = Hiro*2412412###@##P
 
 ### Signin
 POST {{u}}/auth/signin
 Content-Type: application/x-www-form-urlencoded
 
-email = hirostudent@gmail.com &
+email = hiro11@gmail.com &
 password = Hiro*2412412###@##P
 
 ### Me
@@ -47,10 +47,10 @@ POST {{u}}/books
 Content-Type: application/json
 
 {
-  "title": "Sample Book 2",
+  "title": "Sample Book 5",
   "writer": "John Doe",
   "coverImage": "https://example.com/sample.jpg",
-  "point": 100,
+  "point": 1,
   "tags": ["fiction", "adventure"]
 }
 
@@ -83,28 +83,24 @@ POST {{u}}/orders
 Content-Type: application/json
 
 {
-
+  "bookId": {{bookId}}
 }
 
 > {%
   res = response.body
 
-  client.assert(res.id >= 1, "book is valid")
+  client.assert(res.id >= 1, "order is valid")
 
-  client.global.set("bookId",res.id)
+  client.global.set("orderId",res.id)
 %}
 
-### Books: Update
-PATCH {{u}}/books/{{bookId}}
+### Order: Update
+PATCH {{u}}/orders/{{orderId}}
 Content-Type: application/json
 
 {
-  "title": "Sample Book Patched",
-  "writer": "John Doe",
-  "coverImage": "https://example.com/sample.jpg",
-  "point": 100,
-  "tags": ["fiction", "adventure"]
+
 }
 
-### Books: Delete
-DELETE {{u}}/books/{{bookId}}
+### Order: Delete
+DELETE {{u}}/orders/{{orderId}}
