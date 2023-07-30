@@ -2,7 +2,7 @@
 
 ## Description
 
-API Server built using  , TypeScript, Prisma, Graphql and PostgreSQL.
+API Server built using , TypeScript, Prisma, Graphql and PostgreSQL.
 
 Built with ❤️on top of
 
@@ -12,7 +12,6 @@ Built with ❤️on top of
 - [x] [Passport.js](https://docs.nestjs.com/recipes/passport)
 - [x] [Graphql:Schema First](https://docs.nestjs.com/graphql/quick-start#schema-first)
 - [x] [PostgreSQL](https://www.postgresql.org)
-
 
 ### Functional specs
 
@@ -24,11 +23,12 @@ API allows authenticated to users to create and manage orders
 
 ### Technical methodologies followed
 
-- Modular architecture: Business Logic & Auth handled in separate modules, separating concerns.
+- Modular architecture: Business Logic & Auth handled in separate modules, separating
+  concerns.
 - HTTP requests are handled by Controllers
 - <s> API documentation using nest/swagger module </s>
 - Business logic is implemented in Services
-- Database interactions are handled  using Prisma
+- Database interactions are handled using Prisma
 - Validation using NestJS Pipes
 - Data Transfer Object(DTO) pattern for transferring data between layers
 - Configuration management using .env files for development, test & prod configs
@@ -39,11 +39,10 @@ API allows authenticated to users to create and manage orders
 
 ### Technical documentation using [Compodoc](https://jsFame.github.io/api.bookstore.nas/)
 
-As NestJS is heavily inspired by Angular, we can generate the documentation about project structure modules, controllers, services etc. I
-have generated the docs.
+As NestJS is heavily inspired by Angular, we can generate the documentation about project
+structure modules, controllers, services etc. I have generated the docs.
 
 Find 'em here - https://jsFame.github.io/api.bookstore.nas/
-
 
 ## Installation
 
@@ -58,7 +57,6 @@ pnpm install
 
 - Copy `.env.example` with `.env`
 - Fill in the env vars in `.env`
-
 
 ```bash
 # development

@@ -1,5 +1,4 @@
-<a href="https://hyperhire.notion.site/Nest-js-0726-d9b71325bc664e9db4e7e509aebc78d5"> Software Requirement Specification (SPEC) </a>
-============
+# <a href="https://hyperhire.notion.site/Nest-js-0726-d9b71325bc664e9db4e7e509aebc78d5"> Software Requirement Specification (SPEC) </a>
 
 Make bookstore APIs
 
@@ -13,13 +12,14 @@ Reference <https://www.amazon.com/books-used-books-textbooks/b?ie=UTF8&node=2831
 
 3.cover image
 
-1. use this link(<https://images-na.ssl-images-amazon.com/images/I/51Ga5GuElyL._AC_SX184_.jpg>)
+1. use this
+   link(<https://images-na.ssl-images-amazon.com/images/I/51Ga5GuElyL._AC_SX184_.jpg>)
 
 4.point(price)
 
 5.tag(can have multiple tag list are ("fiction", "non-fiction", "science", "essay")
 
-* * * * *
+---
 
 Infrastructure Condition
 
@@ -45,7 +45,8 @@ Situation Condition
 
 ===================
 
-- Will not evaluate about login process, implement the user/login process as simply as you can.
+- Will not evaluate about login process, implement the user/login process as simply as you
+  can.
 
 - When new customer is created, they get 100 point.
 
@@ -53,7 +54,7 @@ Situation Condition
 
 Required
 
---------
+---
 
 - Necessary APIs
 
@@ -73,6 +74,7 @@ Additional Info
 
 - Just Think normal online book store. amazon books is just reference.
 
-- We want to know you are familar with Rebbitmq, so if you can use message queue on the other feature, you can do that.
+- We want to know you are familar with Rebbitmq, so if you can use message queue on the
+  other feature, you can do that.
 
-[//]: # (Provided by http://studio-d-d.com/)
+[//]: # 'Provided by http://studio-d-d.com/'

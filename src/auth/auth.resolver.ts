@@ -1,9 +1,9 @@
-import {Args, Context, Mutation, Resolver} from '@nestjs/graphql'
-import {AuthService} from './auth.service'
-import {AuthController} from './auth.controller'
-import {GraphqlContext} from '../app.dto'
-import {AuthDto} from './dto'
-import {AuthInput} from '../graphql'
+import { Args, Context, Mutation, Resolver } from '@nestjs/graphql'
+import { AuthService } from './auth.service'
+import { AuthController } from './auth.controller'
+import { GraphqlContext } from '../app.dto'
+import { AuthDto } from './dto'
+import { AuthInput } from '../graphql'
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -14,7 +14,7 @@ export class AuthResolver {
 
   @Mutation('signUp')
   signUp(@Args('data') dto: AuthDto) {
-    console.debug({dto})
+    console.debug({ dto })
 
     return this.authController.signup(dto as AuthInput)
   }

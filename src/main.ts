@@ -1,10 +1,10 @@
-import {NestFactory} from '@nestjs/core'
-import {AppModule} from './app.module'
-import {ConfigService} from '@nestjs/config'
-import {ValidationPipe, VersioningType} from '@nestjs/common'
+import { NestFactory } from '@nestjs/core'
+import { AppModule } from './app.module'
+import { ConfigService } from '@nestjs/config'
+import { ValidationPipe, VersioningType } from '@nestjs/common'
 import cookieParser from 'cookie-parser'
 import compression from 'compression'
-import {PrismaClientExceptionFilter} from '../utils/catch_db_exceptions'
+import { PrismaClientExceptionFilter } from '../utils/catch_db_exceptions'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
