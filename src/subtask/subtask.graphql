@@ -1,0 +1,34 @@
+scalar DateTime
+
+type SubTask {
+  id: Int!
+  title: String!
+  taskId: Int!
+  isCompleted: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime
+}
+
+input CreateSubTaskInput {
+  title: String!
+  taskId: Int!
+  isCompleted: Boolean
+}
+
+input UpdateSubTaskInput {
+  id: Int!
+  title: String
+  taskId: Int
+  isCompleted: Boolean
+}
+
+type Query {
+  subtasks: [SubTask]!
+  subtask(id: Int!): SubTask
+}
+
+type Mutation {
+  createSubTask(createSubTaskInput: CreateSubTaskInput!): SubTask!
+  updateSubTask(updateSubTaskInput: UpdateSubTaskInput!): SubTask!
+  removeSubTask(id: Int!): SubTask
+}

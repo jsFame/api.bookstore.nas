@@ -1,0 +1,32 @@
+scalar DateTime
+
+type Column {
+  id: Int!
+  name: String!
+  boardId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+
+  tasks: [Task]
+}
+
+input CreateColumnInput {
+ name: String!
+  boardId: Int!
+}
+
+input UpdateColumnInput {
+  id: Int!
+  name: String!
+}
+
+type Query {
+  columns: [Column]!
+  column(id: Int!): Column
+}
+
+type Mutation {
+  createColumn(createColumnInput: CreateColumnInput!): Column!
+  updateColumn(updateColumnInput: UpdateColumnInput!): Column!
+  removeColumn(id: Int!): Column
+}

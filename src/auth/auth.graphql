@@ -1,0 +1,11 @@
+type AuthPayload {
+    access_token: String!
+}
+
+input AuthInput{
+    wallet: String!
+}
+
+type Mutation {
+    signIn(data:AuthInput!): AuthPayload
+}

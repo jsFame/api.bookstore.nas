@@ -1,0 +1,22 @@
+
+### Home
+GET {{u}}
+Accept: application/json
+
+### Health
+
+GET {{u}}/health
+Accept: application/json
+
+### Sign In
+
+POST {{u}}/auth/signin
+Content-Type: application/x-www-form-urlencoded
+
+wallet=eH9js2vBZGCxb3MmweX9zkJDHp7DmJuZS31tTrQFw8e
+
+
+
+
+
+
