@@ -1,4 +1,4 @@
-import { IsArray, IsInt, IsNotEmpty, IsString } from 'class-validator'
+import { IsArray, IsInt, IsNotEmpty, IsOptional, IsString } from 'class-validator'
 
 export class CreateBookDto {
   @IsNotEmpty()
@@ -17,7 +17,7 @@ export class CreateBookDto {
   @IsInt()
   point: number
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsArray()
-  tags: string[]
+  tags?: string[]
 }
