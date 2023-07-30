@@ -73,3 +73,8 @@ Content-Type: application/json
   "point": 100,
   "tags": ["fiction", "adventure"]
 }
+
+### Books: Delete
+DELETE {{u}}/books/{{bookId}}
+
+

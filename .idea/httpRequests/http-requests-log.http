@@ -1,3 +1,12 @@
+DELETE http://localhost:1606/books/10
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-07-31T033056.200.json
+
+###
+
 PATCH http://localhost:1606/books/10
 Content-Type: application/json
 Content-Length: 162
