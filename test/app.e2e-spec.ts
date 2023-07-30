@@ -1,13 +1,11 @@
-import { Test } from '@nestjs/testing'
-import { AppModule } from '../src/app.module'
-import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common'
+import {Test} from '@nestjs/testing'
+import {AppModule} from '../src/app.module'
+import {HttpStatus, INestApplication, ValidationPipe} from '@nestjs/common'
 import * as pactum from 'pactum'
-import { ConfigService } from '@nestjs/config'
-import { PrismaService } from '../src/prisma/prisma.service'
-import { AuthDto } from '../src/auth/dto'
-import { EditUserDto } from '../src/user/dto'
-import moment from 'moment'
-import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util'
+import {ConfigService} from '@nestjs/config'
+import {PrismaService} from '../src/prisma/prisma.service'
+import {AuthDto} from '../src/auth/dto'
+import {EditUserDto} from '../src/user/dto'
 
 describe('App e2e', () => {
   let app: INestApplication
