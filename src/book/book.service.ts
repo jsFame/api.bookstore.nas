@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common'
-import { UpdateBookDto } from './dto/update-book.dto'
 import { Prisma } from '@prisma/client'
 import { PrismaService } from '../prisma/prisma.service'
 
@@ -25,7 +24,7 @@ export class BookService {
     })
   }
 
-  update(id: number, updateBookDto: UpdateBookDto) {
+  update(id: number, updateBookDto: Prisma.BookUpdateInput) {
     return this.prisma.book.update({
       where: { id },
       data: updateBookDto,
