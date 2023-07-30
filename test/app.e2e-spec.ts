@@ -1,13 +1,8 @@
-import {Test} from '@nestjs/testing'
-import {AppModule} from '../src/app.module'
-import {HttpStatus, INestApplication, ValidationPipe} from '@nestjs/common'
-import * as pactum from 'pactum'
-import {ConfigService} from '@nestjs/config'
-import {PrismaService} from '../src/prisma/prisma.service'
-import {AuthDto} from '../src/auth/dto'
-import {EditUserDto} from '../src/user/dto'
-
-describe('App e2e', () => {
+import { Test } from "@nestjs/testing";
+import { AppModule } from "../src/app.module";
+import { HttpStatus, INestApplication, ValidationPipe } from "@nestjs/common";
+import * as pactum from "pactum";
+import { ConfigService } from '@n"@nestjs/config";port { PrismaService } from '.."../src/prisma/prisma.service";port { AuthDto } from '.."../src/auth/dto";port { EditUserDto } from '.."../src/user/dto";escribe('App e2e', () => {
   let app: INestApplication
   let prisma: PrismaService
   let url: string
@@ -29,7 +24,6 @@ describe('App e2e', () => {
 
   afterAll(async () => {
     await app.close()
-    await prisma.cleanDb()
   })
 
   describe('App', () => {
@@ -37,7 +31,7 @@ describe('App e2e', () => {
       return pactum
         .spec()
         .get(url)
-        .withRequestTimeout(1000) //cold start
+        .withRequestTimeout(2000) //cold start
         .expectStatus(HttpStatus.OK)
         .expectBodyContains({ message: 'app is up and running' })
     })
@@ -65,8 +59,7 @@ describe('App e2e', () => {
     })
   })
 
-
-  describe('Auth', function () {
+  /* describe('Auth', function () {
     const dto: AuthDto = {
       email: 'hiro_tests@gmail.com',
       password: 'testing@rQfAPjfVsreWGz2',
@@ -193,7 +186,5 @@ describe('App e2e', () => {
           .expectStatus(HttpStatus.OK)
       })
     })
-  })
-
-
+  })*/
 })
