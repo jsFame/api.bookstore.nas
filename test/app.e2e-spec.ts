@@ -21,6 +21,7 @@ describe('App e2e', () => {
     const port = config.get('PORT')
     url = `http://localhost:${port}`
     await app.listen(port)
+    console.info({ url })
     pactum.request.setBaseUrl(url)
     await prisma.cleanDb()
   })
@@ -34,7 +35,7 @@ describe('App e2e', () => {
       return pactum
         .spec()
         .get(url)
-        .withRequestTimeout(2000) //cold start
+        .withRequestTimeout(5000) //cold start
         .expectStatus(HttpStatus.OK)
         .expectBodyContains({ message: 'app is up and running' })
     })
