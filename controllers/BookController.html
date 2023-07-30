@@ -521,7 +521,7 @@ export class BookController {
 
   @Get(&#x27;:id&#x27;)
   findOne(@Param(&#x27;id&#x27;) id: number) {
-    return this.bookService.findOne(+id)
+    return this.bookService.findOne(id)
   }
 
   @Patch(&#x27;:id&#x27;)
