@@ -13,17 +13,11 @@ import { OrderService } from './order.service'
 import { UpdateOrderDto } from './dto/update-order.dto'
 import { GetUser } from '../auth/decorator'
 import { JwtGuard } from '../auth/guard'
-import { UserService } from '../user/user.service'
-import { BookService } from '../book/book.service'
 
 @UseGuards(JwtGuard)
 @Controller('orders')
 export class OrderController {
-  constructor(
-    private readonly orderService: OrderService,
-    private readonly userService: UserService,
-    private readonly bookService: BookService,
-  ) {}
+  constructor(private readonly orderService: OrderService) {}
 
   @Post()
   async create(
