@@ -101,6 +101,7 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#tags" >tags</a>
                             </li>
                             <li>
@@ -214,6 +215,7 @@
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>tags</b></span>
                         <a href="#tags"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -230,7 +232,7 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsNotEmpty()<br />@IsArray()<br />
+                            @IsOptional()<br />@IsArray()<br />
                         </code>
                     </td>
                 </tr>
@@ -329,7 +331,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsArray, IsInt, IsNotEmpty, IsString } from &#x27;class-validator&#x27;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsArray, IsInt, IsNotEmpty, IsOptional, IsString } from &#x27;class-validator&#x27;
 
 export class CreateBookDto {
   @IsNotEmpty()
@@ -348,9 +350,9 @@ export class CreateBookDto {
   @IsInt()
   point: number
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsArray()
-  tags: string[]
+  tags?: string[]
 }
 </code></pre>
     </div>

@@ -291,6 +291,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/Order.html" data-type="entity-link" >Order</a>
                             </li>
                             <li class="link">
+                                <a href="classes/PrismaClientExceptionFilter.html" data-type="entity-link" >PrismaClientExceptionFilter</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/RequestWithUser.html" data-type="entity-link" >RequestWithUser</a>
                             </li>
                             <li class="link">
