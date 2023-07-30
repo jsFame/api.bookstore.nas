@@ -1,4 +1,4 @@
-import { ArgumentsHost, Catch, ConflictException, HttpStatus } from '@nestjs/common'
+import { ArgumentsHost, Catch, HttpStatus } from '@nestjs/common'
 import { BaseExceptionFilter } from '@nestjs/core'
 import {
   PrismaClientKnownRequestError,
@@ -7,7 +7,6 @@ import {
 import { Prisma } from '@prisma/client'
 import { Response } from 'express'
 import { GqlExceptionFilter, GraphQLArgumentsHost } from '@nestjs/graphql'
-import { GraphQLResponse } from '@apollo/server'
 
 @Catch(PrismaClientUnknownRequestError, PrismaClientKnownRequestError)
 export class PrismaClientExceptionFilter
@@ -20,7 +19,7 @@ export class PrismaClientExceptionFilter
   ) {
     console.error(exception.message)
     const ctx = host.switchToHttp()
-    const response = ctx.getResponse<Response | GraphQLResponse>()
+    const response = ctx.getResponse<Response>()
     // const message = exception.message.replace(/\n/g, '')
     const message = exception.message
     switch (exception.code) {
@@ -35,22 +34,14 @@ export class PrismaClientExceptionFilter
         }
 
         console.error('DB:caught P2002 error')
-        // response.status(HttpStatus.CONFLICT).json(payload) //FIXME
-        throw new ConflictException(payload)
-        // throwHttpGraphQLError(HttpStatus.CONFLICT, [exception])
+        response.status(HttpStatus.CONFLICT).json(payload) //FIXME
         break
       }
       default:
         // default 500 error code
         // super.catch(exception, host)
         console.error('DB Error:', exception.code)
-        /* response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-          statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: 'Database Error',
-          error: message, // You can customize the error message based on your needs
-        })*/
-
-        throw new ConflictException({
+        response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
           statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
           message: 'Database Error',
           error: message, // You can customize the error message based on your needs
