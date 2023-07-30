@@ -1,100 +1,24 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing", "metrics", "clientExtensions", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
 }
 
 datasource db {
   provider = "cockroachdb"
   url      = env("DATABASE_URL")
-  // extensions = [uuidOssp(map: "uuid-ossp")]
 }
 
-generator nestgraphql {
-  provider               = "node node_modules/prisma-nestjs-graphql"
-  output                 = "../src/@generated/prisma-nestjs-graphql"
-  fields_Validator_from  = "class-validator"
-  fields_Validator_input = true
-}
+model User {
+  id Int @id @default(sequence(minValue: 1)) @db.Int4
 
-// checkout https://www.prisma.io/docs/guides/other/multi-schema
+  email String @unique
+  hash  String
 
-model Wallet {
-  id        Int      @id @default(sequence(minValue: 1)) @db.Int2
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  firstName String?
+  lastName  String?
 
-  /// @Validator.MinLength(32)
-  /// @Validator.MaxLength(44)
-  /// @ValidatorIsAlphanumeric()
-  address String  @unique
-  Board   Board[]
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 
-  @@map("wallets")
-}
-
-model Board {
-  id       Int     @id @default(sequence(minValue: 1)) @db.Int4
-  /// @Validator.MinLength(3)
-  name     String
-  isActive Boolean @default(false)
-  walletId Int
-  wallet   Wallet  @relation(fields: [walletId], references: [id], onDelete: Cascade)
-
-  columns Column[] // One-to-many relationship with Column model
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([walletId, name])
-  @@map("boards")
-}
-
-model Column {
-  id      Int    @id @default(sequence(minValue: 1)) @db.Int4
-  /// @Validator.MinLength(3)
-  /// @Validator.MaxLength(10)
-  name    String
-  boardId Int
-  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
-
-  tasks Task[] // One-to-many relationship with Task model
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique(fields: [boardId, name])
-  @@map("columns")
-}
-
-model Task {
-  id          Int     @id @default(sequence(minValue: 1)) @db.Int4
-  /// @Validator.MinLength(3)
-  title       String
-  description String?
-  // status      String //is Same as columnId
-  columnId    Int
-
-  column Column @relation(fields: [columnId], references: [id], onDelete: Cascade)
-
-  Subtask Subtask[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique(fields: [columnId, title])
-  @@map("tasks")
-}
-
-model Subtask {
-  id          Int     @id @default(sequence(minValue: 1)) @db.Int4
-  /// @Validator.MinLength(3)
-  title       String
-  isCompleted Boolean @default(false)
-  taskId      Int
-  task        Task    @relation(fields: [taskId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique(fields: [taskId, title])
-  @@map("subtasks")
+  @@map("users")
 }
