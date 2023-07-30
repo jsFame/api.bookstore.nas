@@ -143,8 +143,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/prisma-client-exception/prisma-client-exception.filter.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/prisma-client-exception/prisma-client-exception.filter.ts:16</a></div>
                 </td>
             </tr>
 
@@ -214,7 +214,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ArgumentsHost, Catch, ConflictException, HttpStatus } from &#x27;@nestjs/common&#x27;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ArgumentsHost, Catch, HttpStatus } from &#x27;@nestjs/common&#x27;
 import { BaseExceptionFilter } from &#x27;@nestjs/core&#x27;
 import {
   PrismaClientKnownRequestError,
@@ -223,7 +223,6 @@ import {
 import { Prisma } from &#x27;@prisma/client&#x27;
 import { Response } from &#x27;express&#x27;
 import { GqlExceptionFilter, GraphQLArgumentsHost } from &#x27;@nestjs/graphql&#x27;
-import { GraphQLResponse } from &#x27;@apollo/server&#x27;
 
 @Catch(PrismaClientUnknownRequestError, PrismaClientKnownRequestError)
 export class PrismaClientExceptionFilter
@@ -236,7 +235,7 @@ export class PrismaClientExceptionFilter
   ) {
     console.error(exception.message)
     const ctx &#x3D; host.switchToHttp()
-    const response &#x3D; ctx.getResponse&lt;Response | GraphQLResponse&gt;()
+    const response &#x3D; ctx.getResponse&lt;Response&gt;()
     // const message &#x3D; exception.message.replace(/\n/g, &#x27;&#x27;)
     const message &#x3D; exception.message
     switch (exception.code) {
@@ -251,22 +250,14 @@ export class PrismaClientExceptionFilter
         }
 
         console.error(&#x27;DB:caught P2002 error&#x27;)
-        // response.status(HttpStatus.CONFLICT).json(payload) //FIXME
-        throw new ConflictException(payload)
-        // throwHttpGraphQLError(HttpStatus.CONFLICT, [exception])
+        response.status(HttpStatus.CONFLICT).json(payload) //FIXME
         break
       }
       default:
         // default 500 error code
         // super.catch(exception, host)
         console.error(&#x27;DB Error:&#x27;, exception.code)
-        /* response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-          statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: &#x27;Database Error&#x27;,
-          error: message, // You can customize the error message based on your needs
-        })*/
-
-        throw new ConflictException({
+        response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
           statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
           message: &#x27;Database Error&#x27;,
           error: message, // You can customize the error message based on your needs
