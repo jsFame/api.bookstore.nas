@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import * as argon from 'argon2'
+import argon from 'argon2'
 import { AuthDto } from '../src/auth/dto'
 
 const prisma = new PrismaClient()

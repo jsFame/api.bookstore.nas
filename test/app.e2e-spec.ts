@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing'
 import { AppModule } from '../src/app.module'
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common'
-import * as pactum from 'pactum'
+import pactum from 'pactum'
 import { ConfigService } from '@nestjs/config'
 import { PrismaService } from '../src/prisma/prisma.service'
 
