@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >IMutation</li>
+  <li class="breadcrumb-item" >AuthResolver</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -68,7 +68,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/graphql.ts</code>
+            <code>src/user/user.resolver.ts</code>
         </p>
 
 
@@ -90,12 +90,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Abstract</span>
-                                <a href="#signIn" >signIn</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Abstract</span>
-                                <a href="#signUp" >signUp</a>
+                                    <span class="modifier"></span>
+                                <a href="#me" >me</a>
                             </li>
                         </ul>
                     </td>
@@ -109,6 +105,78 @@
     </table>
 </section>
 
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(prisma: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, userController: <a href="../injectables/UserController.html" target="_self">UserController</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/user/user.resolver.ts:9</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>prisma</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PrismaService.html" target="_self" >PrismaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userController</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserController.html" target="_self" >UserController</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
             <section data-compodoc="block-methods">
@@ -120,26 +188,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="signIn"></a>
+                    <a name="me"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
-                        <span ><b>signIn</b></span>
-                        <a href="#signIn"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier"></span>
+                        <span ><b>me</b></span>
+                        <a href="#me"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>signIn(data: <a href="../classes/AuthInput.html" target="_self">AuthInput</a>)</code>
+                    <code>me(user: <a href="../interfaces/User.html" target="_self">User</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Query(&#x27;me&#x27;)<br /></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/graphql.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/user/user.resolver.ts:17</a></div>
                 </td>
             </tr>
 
@@ -160,9 +235,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>data</td>
+                                    <td>user</td>
                                     <td>
-                                                <code><a href="../classes/AuthInput.html" target="_self" >AuthInput</a></code>
+                                                <code><a href="../interfaces/User.html" target="_self" >User</a></code>
                                     </td>
 
                                     <td>
@@ -177,78 +252,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/AuthPayload.html" target="_self" >AuthPayload | Promise</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="signUp"></a>
-                    <span class="name">
-                        <span class="modifier">Abstract</span>
-                        <span ><b>signUp</b></span>
-                        <a href="#signUp"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>signUp(data: <a href="../classes/AuthInput.html" target="_self">AuthInput</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/graphql.ts:28</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>data</td>
-                                    <td>
-                                                <code><a href="../classes/AuthInput.html" target="_self" >AuthInput</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/SignUpPayload.html" target="_self" >SignUpPayload | Promise</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -268,44 +272,26 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class AuthInput {
-    email: string;
-    password: string;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Query, Resolver } from &#x27;@nestjs/graphql&#x27;
+import { PrismaService } from &#x27;../prisma/prisma.service&#x27;
+import { UserService } from &#x27;./user.service&#x27;
+import { UserController } from &#x27;./user.controller&#x27;
+import { GetUserGraphql } from &#x27;../auth/decorator&#x27;
+import { User } from &#x27;@prisma/client&#x27;
+
+@Resolver(&#x27;User&#x27;)
+export class AuthResolver {
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly userService: UserService,
+    private readonly userController: UserController,
+  ) {}
+
+  @Query(&#x27;me&#x27;)
+  me(@GetUserGraphql() user: User) {
+    return this.userController.getMe(user)
+  }
 }
-
-export class AuthPayload {
-    access_token: string;
-}
-
-export class SignUpPayload {
-    id: number;
-    email: string;
-    createdAt: DateTime;
-    updatedAt: DateTime;
-}
-
-export abstract class IMutation {
-    abstract signUp(data: AuthInput): SignUpPayload | Promise&lt;SignUpPayload&gt;;
-
-    abstract signIn(data: AuthInput): AuthPayload | Promise&lt;AuthPayload&gt;;
-}
-
-export class User {
-    id: number;
-    email: string;
-    hash?: Nullable&lt;string&gt;;
-    firstName?: Nullable&lt;string&gt;;
-    lastName?: Nullable&lt;string&gt;;
-    createdAt: DateTime;
-    updatedAt: DateTime;
-}
-
-export abstract class IQuery {
-    abstract me(): User | Promise&lt;User&gt;;
-}
-
-export type DateTime &#x3D; any;
-type Nullable&lt;T&gt; &#x3D; T | null;
 </code></pre>
     </div>
 </div>
@@ -344,7 +330,7 @@ type Nullable&lt;T&gt; &#x3D; T | null;
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'IMutation.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthResolver-1.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

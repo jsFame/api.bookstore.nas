@@ -79,6 +79,9 @@
                             <a href="#GetUser" title="src/auth/decorator/get-user.decorator.ts" ><b>GetUser</b>&nbsp;&nbsp;&nbsp;(src/.../get-user.decorator.ts)</a>
                         </li>
                         <li>
+                            <a href="#GetUserGraphql" title="src/auth/decorator/get-user.decorator.ts" ><b>GetUserGraphql</b>&nbsp;&nbsp;&nbsp;(src/.../get-user.decorator.ts)</a>
+                        </li>
+                        <li>
                             <a href="#logEvents" title="src/prisma/prisma.service.ts" ><b>logEvents</b>&nbsp;&nbsp;&nbsp;(src/.../prisma.service.ts)</a>
                         </li>
                         <li>
@@ -297,6 +300,36 @@
     if (data) return request.user[data]
 
     return request.user
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetUserGraphql"></a>
+                    <span class="name">
+                        <span ><b>GetUserGraphql</b></span>
+                        <a href="#GetUserGraphql"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createParamDecorator(
+  (data: string | undefined, context: ExecutionContext) &#x3D;&gt; {
+    const ctx: GraphqlContext &#x3D; GqlExecutionContext.create(context).getContext()
+
+    const { user } &#x3D; ctx.req
+
+    if (data) return user[data]
+
+    return user
   },
 )</code>
                     </td>
