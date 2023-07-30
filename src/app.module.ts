@@ -1,17 +1,17 @@
-import {Module} from '@nestjs/common'
-import {AppService} from './app.service'
-import {ConfigModule} from '@nestjs/config'
-import {AuthModule} from './auth/auth.module'
+import { Module } from '@nestjs/common'
+import { AppService } from './app.service'
+import { ConfigModule } from '@nestjs/config'
+import { AuthModule } from './auth/auth.module'
 import Joi from 'joi'
-import {CacheModule} from '@nestjs/cache-manager'
-import {GraphQLModule} from '@nestjs/graphql'
-import {ApolloServerPluginLandingPageGraphQLPlayground} from '@apollo/server-plugin-landing-page-graphql-playground'
-import {GraphQLDateTime} from 'graphql-iso-date'
-import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo'
-import {AppController} from './app.controller'
-import {GraphqlContext} from './app.dto'
-import {UserModule} from "./user/user.module";
-import {PrismaModule} from "./prisma/prisma.module";
+import { CacheModule } from '@nestjs/cache-manager'
+import { GraphQLModule } from '@nestjs/graphql'
+import { ApolloServerPluginLandingPageGraphQLPlayground } from '@apollo/server-plugin-landing-page-graphql-playground'
+import { GraphQLDateTime } from 'graphql-iso-date'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { AppController } from './app.controller'
+import { GraphqlContext } from './app.dto'
+import { UserModule } from './user/user.module'
+import { PrismaModule } from './prisma/prisma.module'
 
 let mode = process.env.MODE
 let envFile = '.env'
@@ -72,10 +72,3 @@ console.debug({ mode, envFile })
   providers: [AppService],
 })
 export class AppModule {}
-/*export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(cookieParser())
-      .forRoutes({ path: '/graphql', method: RequestMethod.ALL })
-  }
-}*/
