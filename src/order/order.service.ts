@@ -24,7 +24,7 @@ export class OrderService {
     })
   }
 
-  update(id: number, updateOrderDto: Prisma.OrderUpdateInput) {
+  update(id: number, updateOrderDto: Prisma.OrderUncheckedUpdateInput) {
     return this.prisma.order.update({
       where: { id },
       data: updateOrderDto,
