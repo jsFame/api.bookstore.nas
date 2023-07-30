@@ -1,8 +1,8 @@
-# api.taskmon.ai
+# api.bookstore.nas
 
 ## Description
 
-Task management RESTFul API Server built using  , TypeScript, Prisma, Graphql and PostgreSQL.
+API Server built using  , TypeScript, Prisma, Graphql and PostgreSQL.
 
 Built with ❤️on top of
 
@@ -20,22 +20,20 @@ Built with ❤️on top of
 Task management allows users to register, create tasks and manage them, major features are
 
 - User SignUp & SignIn
-- Create Tasks which are visible only to the logged in users
-- New created tasks will be in OPEN status
-- Update task status to IN_PROGRESS or DONE
-- Delete tasks
+- CRUD Orders
+- Inspect Items
 
 ### Technical methodologies followed
 
-- Modular architecture: Tasks & Auth handled in separate modules, separating concerns.
+- Modular architecture: Business Logic & Auth handled in separate modules, separating concerns.
 - HTTP requests are handled by Controllers
-- API documentation using nest/swagger module
+- <s> API documentation using nest/swagger module </s>
 - Business logic is implemented in Services
-- Database interactions are handled in Repository classes using TypeORM
+- Database interactions are handled  using Prisma
 - Validation using NestJS Pipes
 - Data Transfer Object(DTO) pattern for transferring data between layers
 - Configuration management using .env files for development, test & prod configs
-- Authentication / Authorization, Task ownership by users
+- Authentication / Authorization, Event ownership by users
 - PassportJS, JWT tokens, Password hashing, salts
 - Unit tests using Jest
 - Supertest for E2E testing
