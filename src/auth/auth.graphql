@@ -3,9 +3,11 @@ type AuthPayload {
 }
 
 input AuthInput{
-    wallet: String!
+    email: String!
+    password: String!
 }
 
 type Mutation {
+    signUp(data:AuthInput!): User!
     signIn(data:AuthInput!): AuthPayload
 }
