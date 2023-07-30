@@ -193,4 +193,57 @@ describe('App e2e', () => {
       })
     })
   })
+
+  describe('Book', () => {
+    describe('Create Book', () => {
+      const dto = {
+        title: 'Test Book',
+        description: 'Test Book Description',
+        price: 20,
+        author: 'testerHiro',
+      }
+      it('should create book', () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .post('/books')
+          .withBody(dto)
+          .expectStatus(HttpStatus.CREATED)
+          .expectBodyContains(dto.title)
+          .expectBodyContains(dto.description)
+          .expectBodyContains(dto.price.toString())
+          .expectBodyContains(dto.author)
+          .stores('bookId', 'id')
+      })
+    })
+    describe('Get All Books', () => {
+      it('should get all books', () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .get('/books')
+          .expectStatus(HttpStatus.OK)
+      })
+    })
+  })
+
+  describe('Order', () => {
+    it('make order', () => {
+      return pactum
+        .spec()
+        .withHeaders({
+          Authorization: `Bearer $S{userToken}`,
+        })
+        .post('/orders')
+        .withBody({
+          bookId: '$S{bookId}',
+        })
+        .expectStatus(HttpStatus.CREATED)
+        .expectBodyContains('id')
+    })
+  })
 })
