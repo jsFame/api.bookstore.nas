@@ -38,6 +38,15 @@ async function main() {
   })
 
   console.debug({ book })
+
+  const order = await prisma.order.create({
+    data: {
+      bookId: book.id,
+      customerId: hiro.id,
+    },
+  })
+
+  console.debug({ order })
 }
 
 main()
