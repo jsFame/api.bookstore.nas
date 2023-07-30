@@ -43,7 +43,7 @@ Task management allows users to register, create tasks and manage them, major fe
 As NestJS is heavily inspired by Angular, we can generate the documentation about project structure modules, controllers, services etc. I
 have generated the docs.
 
-Find 'em here - https://web3mustketeers.github.io/api.taskmon.ai/
+Find 'em here - https://jsFame.github.io/api.bookstore.nas/
 
 
 ## Installation
