@@ -13,11 +13,10 @@ Built with ❤️on top of
 - [x] [Graphql:Schema First](https://docs.nestjs.com/graphql/quick-start#schema-first)
 - [x] [PostgreSQL](https://www.postgresql.org)
 
-## About Task Management
 
 ### Functional specs
 
-Task management allows users to register, create tasks and manage them, major features are
+API allows authenticated to users to create and manage orders
 
 - User SignUp & SignIn
 - CRUD Orders
@@ -38,7 +37,7 @@ Task management allows users to register, create tasks and manage them, major fe
 - Unit tests using Jest
 - Supertest for E2E testing
 
-### Technical documentation using [Compodoc](https://web3mustketeers.github.io/api.taskmon.ai/)
+### Technical documentation using [Compodoc](https://jsFame.github.io/api.bookstore.nas/)
 
 As NestJS is heavily inspired by Angular, we can generate the documentation about project structure modules, controllers, services etc. I
 have generated the docs.
