@@ -89,6 +89,8 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
     return this.$transaction([
       //tear down logic
       this.user.deleteMany(),
+      this.book.deleteMany(),
+      this.order.deleteMany(),
     ])
   }
 }

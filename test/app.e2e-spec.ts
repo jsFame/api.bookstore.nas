@@ -30,6 +30,7 @@ describe('App e2e', () => {
 
   afterAll(async () => {
     await app.close()
+    await prisma.cleanDb()
   })
 
   describe('App', () => {
@@ -144,57 +145,6 @@ describe('App e2e', () => {
     })
   })
 
-  describe('User', () => {
-    describe('Get me', () => {
-      it('should fail without header or cookies', () => {
-        return pactum.spec().get('/users/me').expectStatus(401)
-      })
-
-      it('should get current user with Bearer Token', () => {
-        return pactum
-          .spec()
-          .withHeaders({
-            Authorization: `Bearer $S{userToken}`,
-          })
-          .get('/users/me')
-          .expectStatus(200)
-      })
-
-      it('should get current user with cookies', () => {
-        return pactum.spec().get('/users/me')
-        // .withCookies("token",`$S{userToken}`) //FIXME
-        // .expectStatus(HttpStatus.OK)
-      })
-    })
-    describe('Edit User', () => {
-      const dto: EditUserDto = {
-        firstName: 'Hiro',
-        lastName: 'Hamada',
-      }
-      it('should edit user', () => {
-        return pactum
-          .spec()
-          .withBearerToken(`$S{userToken}`)
-          .patch('/users')
-          .withBody(dto)
-          .expectStatus(200)
-          .expectBodyContains(dto.firstName)
-          .expectBodyContains(dto.lastName)
-      })
-    })
-    describe('Delete User', () => {
-      it('should delete current user', () => {
-        return pactum
-          .spec()
-          .withHeaders({
-            Authorization: `Bearer $S{userToken}`,
-          })
-          .delete('/users')
-          .expectStatus(HttpStatus.OK)
-      })
-    })
-  })
-
   describe('Book', () => {
     describe('Create Book', () => {
       const dto: CreateBookDto = {
@@ -247,6 +197,57 @@ describe('App e2e', () => {
         .expectStatus(HttpStatus.CREATED)
         .expectBodyContains('id')
         .inspect()
+    })
+  })
+
+  describe('User', () => {
+    describe('Get me', () => {
+      it('should fail without header or cookies', () => {
+        return pactum.spec().get('/users/me').expectStatus(401)
+      })
+
+      it('should get current user with Bearer Token', () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .get('/users/me')
+          .expectStatus(200)
+      })
+
+      it('should get current user with cookies', () => {
+        return pactum.spec().get('/users/me')
+        // .withCookies("token",`$S{userToken}`) //FIXME
+        // .expectStatus(HttpStatus.OK)
+      })
+    })
+    describe('Edit User', () => {
+      const dto: EditUserDto = {
+        firstName: 'Hiro',
+        lastName: 'Hamada',
+      }
+      it('should edit user', () => {
+        return pactum
+          .spec()
+          .withBearerToken(`$S{userToken}`)
+          .patch('/users')
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.lastName)
+      })
+    })
+    describe('Delete User', () => {
+      it('should delete current user', () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .delete('/users')
+          .expectStatus(HttpStatus.OK)
+      })
     })
   })
 })
