@@ -19,16 +19,24 @@ async function create_user(dto: AuthDto) {
 async function main() {
   await prisma.user.deleteMany()
 
-  const user1 = create_user({
+  const hiro = await create_user({
     email: 'hiro@nas.com',
     password: 'hiro@Nas@@@@#',
   })
-  const user2 = create_user({
-    email: 'laciferin@nas.com',
-    password: 'laciferin@Testing#',
+
+  console.debug({ hiro })
+
+  const book = await prisma.book.create({
+    data: {
+      title: 'Hiro: my life',
+      writer: 'Hiro Hamada',
+      coverImage: '',
+      point: 1,
+      tags: ['autobiography', 'hiro'],
+    },
   })
 
-  await Promise.allSettled([user1, user2])
+  console.debug({ book })
 }
 
 main()

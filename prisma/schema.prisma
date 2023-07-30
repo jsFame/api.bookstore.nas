@@ -37,6 +37,8 @@ model Book {
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@map("books")
 }
 
 model Order {
@@ -48,4 +50,6 @@ model Order {
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@map("orders")
 }
