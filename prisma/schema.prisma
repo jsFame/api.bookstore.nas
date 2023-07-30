@@ -30,7 +30,7 @@ model Book {
   id         Int      @id @default(sequence(minValue: 1)) @db.Int4
   title      String
   writer     String
-  coverImage String
+  coverImage String?
   point      Int
   tags       String[]
   orders     Order[]
@@ -45,8 +45,8 @@ model Order {
   id         Int  @id @default(sequence(minValue: 1)) @db.Int4
   customerId Int
   bookId     Int
-  customer   User @relation(fields: [customerId], references: [id])
-  book       Book @relation(fields: [bookId], references: [id])
+  customer   User @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  book       Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()

@@ -30,7 +30,8 @@ async function main() {
     data: {
       title: 'Hiro: my life',
       writer: 'Hiro Hamada',
-      coverImage: '',
+      coverImage:
+        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbig-hero-6-fanon.fandom.com%2Fwiki%2FHiro_Hamada%2FGallery&psig=AOvVaw0UOJKW-dwJu5pnx1pPqq7H&ust=1690837586355000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCICf5P-qt4ADFQAAAAAdAAAAABAE',
       point: 1,
       tags: ['autobiography', 'hiro'],
     },
