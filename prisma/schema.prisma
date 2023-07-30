@@ -14,11 +14,38 @@ model User {
   email String @unique
   hash  String
 
+  point Int @default(100)
+
   firstName String?
   lastName  String?
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   updatedAt DateTime @updatedAt @db.Timestamptz()
+  orders    Order[]
 
   @@map("users")
+}
+
+model Book {
+  id         Int      @id @default(sequence(minValue: 1)) @db.Int4
+  title      String
+  writer     String
+  coverImage String
+  point      Int
+  tags       String[]
+  orders     Order[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+}
+
+model Order {
+  id         Int  @id @default(sequence(minValue: 1)) @db.Int4
+  customerId Int
+  bookId     Int
+  customer   User @relation(fields: [customerId], references: [id])
+  book       Book @relation(fields: [bookId], references: [id])
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
 }
