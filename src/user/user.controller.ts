@@ -1,10 +1,19 @@
-import { Body, Controller, Delete, Get, Patch, UseGuards } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Injectable,
+  Patch,
+  UseGuards,
+} from '@nestjs/common'
 import { JwtGuard } from '../auth/guard'
 import { GetUser } from '../auth/decorator'
 import { User } from '@prisma/client'
 import { EditUserDto } from './dto'
 import { UserService } from './user.service'
 
+@Injectable()
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
