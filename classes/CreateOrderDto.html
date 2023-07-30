@@ -93,11 +93,6 @@
                                     <span class="modifier"></span>
                                 <a href="#bookId" >bookId</a>
                             </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                <a href="#customerId" >customerId</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -147,43 +142,6 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/order/dto/create-order.dto.ts:10</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="customerId"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                        <span ><b>customerId</b></span>
-                        <a href="#customerId"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @IsNotEmpty()<br />@IsInt()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
                                 <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/order/dto/create-order.dto.ts:6</a></div>
                         </td>
                     </tr>
@@ -206,10 +164,6 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsInt, IsNotEmpty } from &#x27;class-validator&#x27;
 
 export class CreateOrderDto {
-  @IsNotEmpty()
-  @IsInt()
-  customerId: number
-
   @IsNotEmpty()
   @IsInt()
   bookId: number
