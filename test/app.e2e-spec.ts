@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config'
 import { PrismaService } from '../src/prisma/prisma.service'
 import { AuthDto } from '../src/auth/dto'
 import { EditUserDto } from '../src/user/dto'
+import { CreateBookDto } from '../src/book/dto/create-book.dto'
 
 describe('App e2e', () => {
   let app: INestApplication
@@ -24,11 +25,11 @@ describe('App e2e', () => {
     url = `http://localhost:${port}`
     await app.listen(port)
     pactum.request.setBaseUrl(url)
+    await prisma.cleanDb()
   })
 
   afterAll(async () => {
     await app.close()
-    await prisma.cleanDb()
   })
 
   describe('App', () => {
@@ -196,11 +197,12 @@ describe('App e2e', () => {
 
   describe('Book', () => {
     describe('Create Book', () => {
-      const dto = {
+      const dto: CreateBookDto = {
         title: 'Test Book',
-        description: 'Test Book Description',
-        price: 20,
-        author: 'testerHiro',
+        writer: 'Tadashi hamada',
+        coverImage: 'https://example.com/test.jpg',
+        point: 10,
+        tags: ['test', 'e2e'],
       }
       it('should create book', () => {
         return pactum
@@ -212,10 +214,9 @@ describe('App e2e', () => {
           .withBody(dto)
           .expectStatus(HttpStatus.CREATED)
           .expectBodyContains(dto.title)
-          .expectBodyContains(dto.description)
-          .expectBodyContains(dto.price.toString())
-          .expectBodyContains(dto.author)
+          .expectBodyContains('id')
           .stores('bookId', 'id')
+          .inspect()
       })
     })
     describe('Get All Books', () => {
@@ -227,6 +228,7 @@ describe('App e2e', () => {
           })
           .get('/books')
           .expectStatus(HttpStatus.OK)
+          .inspect()
       })
     })
   })
@@ -244,6 +246,7 @@ describe('App e2e', () => {
         })
         .expectStatus(HttpStatus.CREATED)
         .expectBodyContains('id')
+        .inspect()
     })
   })
 })
