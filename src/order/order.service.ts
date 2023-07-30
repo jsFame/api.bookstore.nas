@@ -6,7 +6,7 @@ import { Prisma } from '@prisma/client'
 export class OrderService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(createOrderDto: Prisma.OrderCreateInput) {
+  create(createOrderDto: Prisma.OrderUncheckedCreateInput) {
     return this.prisma.order.create({ data: createOrderDto })
   }
 
