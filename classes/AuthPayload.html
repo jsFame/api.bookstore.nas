@@ -170,20 +170,6 @@ export abstract class IMutation {
     abstract signIn(data: AuthInput): AuthPayload | Promise&lt;AuthPayload&gt;;
 }
 
-export class User {
-    id: number;
-    email: string;
-    hash?: Nullable&lt;string&gt;;
-    firstName?: Nullable&lt;string&gt;;
-    lastName?: Nullable&lt;string&gt;;
-    createdAt: DateTime;
-    updatedAt: DateTime;
-}
-
-export abstract class IQuery {
-    abstract me(): User | Promise&lt;User&gt;;
-}
-
 export type DateTime &#x3D; any;
 type Nullable&lt;T&gt; &#x3D; T | null;
 </code></pre>
