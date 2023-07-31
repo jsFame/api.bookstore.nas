@@ -3,7 +3,6 @@ scalar DateTime
 type User {
   id: Int!
   email: String!
-  hash: String
   firstName: String
   lastName: String
 

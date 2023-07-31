@@ -33,7 +33,6 @@ export abstract class IMutation {
 export class User {
     id: number;
     email: string;
-    hash?: Nullable<string>;
     firstName?: Nullable<string>;
     lastName?: Nullable<string>;
     createdAt: DateTime;
