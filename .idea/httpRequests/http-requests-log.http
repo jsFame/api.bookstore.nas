@@ -1,3 +1,188 @@
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 46
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6Im5hc0BuYXMuY29tIiwiaWF0IjoxNjkwODM5MDYyLCJleHAiOjE2OTA4NDI2NjJ9.QDQALtEAz2hFf-p-7ymedyFI8xegHbTGzmzsQfZBfXQ
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "query Query {  me {    id  }}"
+}
+
+<> 2023-08-01T030402.200.json
+
+###
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 223
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6Im5hc0BuYXMuY29tIiwiaWF0IjoxNjkwODM5MDYyLCJleHAiOjE2OTA4NDI2NjJ9.QDQALtEAz2hFf-p-7ymedyFI8xegHbTGzmzsQfZBfXQ
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "mutation SignUp($data: AuthInput!) {  signUp(data: $data) {    id    email    createdAt    updatedAt  }}",
+
+  "variables": {
+    "data": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    }
+  }
+}
+
+<> 2023-08-01T030234.200.json
+
+###
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 224
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6Im5hc0BuYXMuY29tIiwiaWF0IjoxNjkwODM5MDYyLCJleHAiOjE2OTA4NDI2NjJ9.QDQALtEAz2hFf-p-7ymedyFI8xegHbTGzmzsQfZBfXQ
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "mutation SignUp($data: AuthInput!) {  signUp(data: $data) {    id    email    createdAt    updatedAt  }}",
+
+  "variables": {
+    "data": {
+      "email": "nas1@nas.com",
+      "password": "Nas@123#"
+    }
+  }
+}
+
+<> 2023-08-01T030231.200.json
+
+###
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 223
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6Im5hc0BuYXMuY29tIiwiaWF0IjoxNjkwODM5MDYyLCJleHAiOjE2OTA4NDI2NjJ9.QDQALtEAz2hFf-p-7ymedyFI8xegHbTGzmzsQfZBfXQ
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "mutation SignUp($data: AuthInput!) {  signUp(data: $data) {    id    email    createdAt    updatedAt  }}",
+
+  "variables": {
+    "data": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    }
+  }
+}
+
+<> 2023-08-01T030225.200.json
+
+###
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 198
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "mutation SignIn($data: AuthInput!) {  signIn(data: $data) {    access_token  }}",
+
+  "variables": {
+    "data": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    }
+  }
+}
+
+<> 2023-08-01T030102.200.json
+
+###
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 325
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "mutation signUp($data: AuthInput!, $signInData2: AuthInput!) {\n  signIn(data: $signInData2) {\n    access_tokenn  }\n}",
+
+  "variables": {
+    "data": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    },
+    "signInData2": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    }
+  }
+}
+
+<> 2023-08-01T025812.400.json
+
+###
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 325
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "mutation signIn($data: AuthInput!, $signInData2: AuthInput!) {\n  signIn(data: $signInData2) {\n    access_tokenn  }\n}",
+
+  "variables": {
+    "data": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    },
+    "signInData2": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    }
+  }
+}
+
+<> 2023-08-01T025759.400.json
+
+###
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+Content-Length: 325
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "query": "mutation signIn($data: AuthInput!, $signInData2: AuthInput!) {\n  signIn(data: $signInData2) {\n    access_tokenn  }\n}",
+
+  "variables": {
+    "data": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    },
+    "signInData2": {
+      "email": "nas@nas.com",
+      "password": "Nas@123#"
+    }
+  }
+}
+
+<> 2023-08-01T025754.400.json
+
+###
+
 DELETE http://localhost:1606/orders/6
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)

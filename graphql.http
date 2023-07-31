@@ -42,4 +42,15 @@ Content-Type: application/json
 }
 
 
+### Me
+
+POST http://localhost:1606/graphql
+Content-Type: application/json
+
+{
+  "query": "query Query {  me {    id  }}"
+}
+
+
+
 
