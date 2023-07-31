@@ -4,9 +4,9 @@ import { UserService } from './user.service'
 import { UserController } from './user.controller'
 import { GetUserGraphql } from '../auth/decorator'
 import { UseGuards } from '@nestjs/common'
-import { JwtGuard } from '../auth/guard'
+import { GqlAuthGuard } from '../auth/guard'
 
-@UseGuards(JwtGuard)
+@UseGuards(GqlAuthGuard)
 @Resolver('User')
 export class UserResolver {
   constructor(
