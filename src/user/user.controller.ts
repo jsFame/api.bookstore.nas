@@ -20,8 +20,8 @@ export class UserController {
 
   @UseGuards(JwtGuard)
   @Get('me')
-  getMe(@GetUser() user: User) {
-    return user
+  getMe(@GetUser('userId') user: User) {
+    return this.userService.findOne(user.id)
   }
 
   @UseGuards(JwtGuard)
