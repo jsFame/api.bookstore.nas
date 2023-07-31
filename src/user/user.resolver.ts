@@ -3,8 +3,10 @@ import { PrismaService } from '../prisma/prisma.service'
 import { UserService } from './user.service'
 import { UserController } from './user.controller'
 import { GetUserGraphql } from '../auth/decorator'
-import { User } from '@prisma/client'
+import { UseGuards } from '@nestjs/common'
+import { JwtGuard } from '../auth/guard'
 
+@UseGuards(JwtGuard)
 @Resolver('User')
 export class UserResolver {
   constructor(
@@ -14,7 +16,7 @@ export class UserResolver {
   ) {}
 
   @Query('me')
-  me(@GetUserGraphql() user: User) {
-    return this.userController.getMe(user)
+  me(@GetUserGraphql('userId') userId: number) {
+    return this.userController.getMe(userId)
   }
 }
