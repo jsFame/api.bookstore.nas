@@ -14,7 +14,7 @@ Content-Type: application/json
 
 ### Signup
 
-POST http://localhost:1606/graphql
+POST {{u}}/graphql
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 ### Signin
 
-POST http://localhost:1606/graphql
+POST {{u}}/graphql
 Content-Type: application/json
 
 {
@@ -46,7 +46,7 @@ Content-Type: application/json
 
 ### Me
 
-POST http://localhost:1606/graphql
+POST {{u}}/graphql
 Content-Type: application/json
 
 {
