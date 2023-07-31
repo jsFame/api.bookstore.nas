@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >AuthResolver</li>
+  <li class="breadcrumb-item" >UserResolver</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -280,7 +280,7 @@ import { GetUserGraphql } from &#x27;../auth/decorator&#x27;
 import { User } from &#x27;@prisma/client&#x27;
 
 @Resolver(&#x27;User&#x27;)
-export class AuthResolver {
+export class UserResolver {
   constructor(
     private readonly prisma: PrismaService,
     private readonly userService: UserService,
@@ -330,7 +330,7 @@ export class AuthResolver {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'AuthResolver-1.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserResolver.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
