@@ -1,3 +1,5 @@
+#https://lingojam.com/TexttoOneLine
+
 ### Schema
 POST {{u}}/graphql
 sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Opera";v="100"
