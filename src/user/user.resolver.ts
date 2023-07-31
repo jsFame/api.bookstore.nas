@@ -6,7 +6,7 @@ import { GetUserGraphql } from '../auth/decorator'
 import { User } from '@prisma/client'
 
 @Resolver('User')
-export class AuthResolver {
+export class UserResolver {
   constructor(
     private readonly prisma: PrismaService,
     private readonly userService: UserService,
