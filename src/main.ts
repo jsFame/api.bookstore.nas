@@ -25,7 +25,7 @@ async function bootstrap() {
     ],
     credentials: true,
   })
-  app.useGlobalFilters(new PrismaClientExceptionFilter())
+  app.useGlobalFilters(new PrismaClientExceptionFilter()) //FIXME: reason why this is required
   app.enableVersioning({
     type: VersioningType.HEADER,
     header: 'Accept-Version',

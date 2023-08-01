@@ -1,11 +1,12 @@
 {
   "version": 2,
   "installCommand": "pnpm install",
-  "buildCommand": "",
+  "buildCommand": "npm run build",
   "devCommand": "npm run start:dev",
   "builds": [
     {
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "src": "src/main.ts"
     }
   ],
   "routes": [

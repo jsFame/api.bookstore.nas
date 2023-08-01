@@ -9,7 +9,6 @@ import {
 } from '@nestjs/common'
 import { JwtGuard } from '../auth/guard'
 import { GetUser } from '../auth/decorator'
-import { User } from '@prisma/client'
 import { EditUserDto } from './dto'
 import { UserService } from './user.service'
 
@@ -20,8 +19,8 @@ export class UserController {
 
   @UseGuards(JwtGuard)
   @Get('me')
-  getMe(@GetUser('userId') user: User) {
-    return this.userService.findOne(user.id)
+  getMe(@GetUser('userId') userId: number) {
+    return this.userService.findOne(userId)
   }
 
   @UseGuards(JwtGuard)
