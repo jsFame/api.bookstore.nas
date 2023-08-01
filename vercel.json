@@ -6,7 +6,7 @@
   "builds": [
     {
       "use": "@vercel/node",
-      "src": "src/main.ts"
+      "src": "dist/src/main.js"
     }
   ],
   "routes": [
